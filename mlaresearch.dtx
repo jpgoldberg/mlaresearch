@@ -1,0 +1,227 @@
+% \iffalse meta-comment
+%<*internal>
+\iffalse
+%</internal>
+%<*readme>
+-------------------------------------------------------------------------------------
+mlaresearch --- Produce research papers that comply with MLA Handbook
+Author:  Jeffrey Goldberg
+E-mail:  jeffrey@goldmark.org
+License: Released under the LaTeX Project Public License v1.3c or later
+See:     http://www.latex-project.org/lppl.txt
+-------------------------------------------------------------------------------------
+
+Short description:
+The mlaresearch class is used for the preparation of papers that conform
+to the guidelines of the MLA Handbook for Writers of Research Papers.
+Students in the USA are often asked to submit course work following
+those Modern Language Association and this document class is to assist
+with that. This class relies heavily on packages that are commonly
+included in LaTeX distributions.
+
+Installation:
+Execute the inst script with the --help option for more information.
+
+%</readme>
+%<*internal>
+\fi
+%</internal>
+%<*driver>
+\ProvidesFile{mlaresearch.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class>\ProvidesClass{mlaresearh}%
+%<*class>
+   [2014/04/05 v0.01 mlaresearch class for letters and invoices]
+%</class>
+%<*driver>
+\documentclass{ltxdoc}
+%\OnlyDescription
+\RecordChanges
+\CodelineIndex\EnableCrossrefs
+\def\T#1{\texttt{#1}}
+\def\C#1{\texttt{$\mathtt{\backslash}$#1}}
+\def\CMP#1{\C{#1}\marginpar{\C{#1}}}
+
+\begin{document}
+  \DocInput{mlaresearch.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v0.01}{2014/03/05}{Initial version}
+% \DoNotIndex{%
+% \ , \", \', \@auxout, \AtBeginDocument, \AtEndDocument, \Cbox,
+% \CurrentOption, \DeclareOption, \DescribeMacro, \ForEachX, \IfInteger,
+% \IfStrEq, \LARGE, \Large, \LoadClass, \ML, \NN, \PassOptionsToClass,
+% \ProcessOptions, \RequirePackage, \StrLeft, \StrMid, \StrRight,
+% \StrSubstitute, \TPGrid, \Tbox, \Undefined, \\, \^, \`, \aa,
+% \addtocounter, \advance, \barsep, \baselineskip, \begin, \bfseries,
+% \bgroup, \clearpage, \cmidrule, \colorbox, \csname, \def, \define@key,
+% \definecolor, \egroup, \else, \empty, \end, \endcsname, \enspace,
+% \expandafter, \fancyfoot, \fancyhead, \fancyhf, \fboxsep, \fi, \filedat,
+% \fileversion, \fill, \fontencoding, \fontfamily, \fontseries, \fontshape,
+% \footnotesize, \gdef, \geometry, \hbox, \hfill, \hline, \hsize, \hspace,
+% \ht, \hypersetup, \if@twoside, \ifcase, \ifdim, \ifnum, \ifx,
+% \ignorespaces, \immediate, \includegraphics, \label, \lastpage@putlabel,
+% \lccode, \let, \long, \lowercase, \mbox, \multicolumn, \newcommand,
+% \newcount, \newcounter, \newdimen, \newenvironment, \newfont, \newif,
+% \newlabel, \noindent, \number, \o, \or, \pageref, \pagestyle,
+% \paperheight, \paperwidth, \par, \parindent, \parskip, \pdfinfo, \qquad,
+% \quad, \raggedright, \raisebox, \relax, \rightskip, \rule, \sbox,
+% \scriptsize, \scshape, \selectfont, \selectlanguage, \setbox,
+% \setcounter, \setkeys, \setlength, \sffamily, \space, \string,
+% \tbfigures, \textbf, \textbullet, \textsf, \thepage, \thislevelitem,
+% \thispagestyle, \undefined, \unskip, \usepackage, \value, \vbox, \vfill,
+% \vskip, \vspace, \wd, \write, \z@, % }
+%
+% \GetFileInfo{mlaresearch.dtx}
+%
+% \title{The \textsf{mlaresearch} class\thanks{This document
+%   corresponds to \textsf{mlaresearch}~\fileversion, dated 
+%   \filedate.}\\for
+%   letters, invoices, and more}
+% \author{Jeffrey Goldberg \\ \texttt{jeffrey@goldmark.org}}
+%
+% \maketitle
+% \begin{abstract}\noindent
+% The |mlaresearch| class can be used for the preparation of research
+% papers that meet the requirements of the MLA Handbook for Writers
+% of Research Papers. This document class does most of its work
+% by using commonly available LaTeX packages.
+% \\[2ex]
+% \textbf{Keywords:} mla, course work, requirements
+%
+% \end{abstract}
+% \tableofcontents
+% \section{Introduction}
+%
+% This class is intended to be used \dots
+%
+% The general setup of a document is
+% \begin{verbatim}
+%     \documentclass{mlaresearch}
+%     \usepackage[style=mla]{biblatex}
+%     \addbibresource{your-bibtex-data-file.bib}
+%     \title{Your Paper's Title}
+%     \author{Your name here}
+%     \lastname{Your family name here}
+%     \instructor{Instructor's name}
+%     \course{Class name}
+%     \date{\today}
+%
+%     \begin{document}
+%     \maketitle
+%     ... your awesome words of wisdom ...
+%     \newpage
+%     \printbibliography
+%     \end{document}
+% \end{verbatim}
+%
+% This document describes several examples. The distribution contains a directory 
+% |examples| where each of these has a complete set of files, ready to experiment with.
+%
+% \section{Class options}
+% The isodoc class is based on the |article| class and you can use the same
+% class options. Note, however, that if you change the font size from its
+% default (10pt) to an other value (11pt, 12pt) this applies to all text,
+% including headings, address label, et cetera. This is normally not what
+% you want. If you really want to change the font size of, for example, the
+% text body, do so with the usual font commands. Doing so will result in
+% poorly balanced document, however.
+%
+%
+% \section{Commands}
+% \DescribeMacro{\showkeys}
+% The \C{showkeys} command can be useful for debugging. It prints a table
+%
+%
+% \StopEventually{\PrintChanges \PrintIndex}
+%
+% \clearpage
+% \section{Implementation}
+% The basis is the |article| class with all options except that we
+% default to letterpaper (does anyone outside of the US need to
+% submit papers in this style) and 12pt.
+%
+%    \begin{macrocode}
+\PassOptionsToClass{letterpaper,12pt}{article}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions
+\LoadClass{article}
+%    \end{macrocode}
+% We use |\ctable| floats here, and we need |ctable|'s commands for decent
+% spacing in tables and more. |ctable| also brings us |array|, |tabularx|,
+% |color|, and |xkeyval|. |eurosym| is used for the euro symbol.
+%    \begin{macrocode}
+\RequirePackage{geometry,fancyhdr,titling}
+%    \end{macrocode}
+%
+% I don't know if anyone outside of the US is ever required to submit
+% course work in this style. For the moment, I will force letter paper
+%
+%    \begin{macrocode}
+\geometry{margin=1in}
+%    \end{macrocode}
+%    \begin{macrocode}
+\PassOptionsToPackage{doublespacing}{setspace}
+\RequirePackage{setspace}
+%    \end{macrocode}
+%
+% \section{Title material}
+%    \begin{macrocode}
+\newcommand{\lastname}[1]{%
+  \gdef\thelastname{#1}}
+\newcommand{\thelastname}{}
+\newcommand{\instructor}[1]{%
+  \gdef\theinstructor{#1}}
+\newcommand{\theinstructor}{}
+\newcommand{\course}[1]{%
+  \gdef\thecourse{#1}}
+\newcommand{\thecourse}{}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand{\makemlatitle}{
+\noindent \theauthor \newline
+\theinstructor \newline
+\thecourse \newline 
+\thedate \par
+\begin{center}
+	\thetitle
+\end{center}\par }
+%    \end{macrocode}
+% Author last name and page number in right head.
+%    \begin{macrocode}
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\thelastname\ \thepage}
+\lhead{}
+\chead{}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+%    \end{macrocode}
+%    \begin{macrocode}
+\parindent=0.5in
+
+% \Finale
+\endinput
