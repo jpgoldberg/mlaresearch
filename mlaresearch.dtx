@@ -30,9 +30,9 @@ Execute the inst script with the --help option for more information.
 \ProvidesFile{mlaresearch.dtx}
 %</driver>
 %<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<class>\ProvidesClass{mlaresearh}%
+%<class>\ProvidesClass{mlaresearch}%
 %<*class>
-   [2014/04/05 v0.01 mlaresearch class for letters and invoices]
+   [2014/04/05 v0.01 mlaresearch class for MLA papers]
 %</class>
 %<*driver>
 \documentclass{ltxdoc}
@@ -198,15 +198,20 @@ Execute the inst script with the --help option for more information.
   \gdef\thecourse{#1}}
 \newcommand{\thecourse}{}
 %    \end{macrocode}
+%
+% Interaction with ragged2e seems to require explicit |\noindent|s
 %    \begin{macrocode}
-\newcommand{\makemlatitle}{
-\noindent \theauthor \newline
-\theinstructor \newline
-\thecourse \newline 
-\thedate \par
-\begin{center}
-	\thetitle
-\end{center}\par }
+\providecommand{\makemlatitle}{%
+\bgroup
+  \parindent=0pt\relax
+  \theauthor \newline
+  \theinstructor \newline
+  \thecourse \newline 
+  \thedate \par
+  \begin{center}
+ 	\thetitle
+  \end{center}
+\egroup\par }
 %    \end{macrocode}
 % Author last name and page number in right head.
 %    \begin{macrocode}
@@ -220,8 +225,27 @@ Execute the inst script with the --help option for more information.
 \rfoot{}
 \renewcommand{\headrulewidth}{0pt}
 %    \end{macrocode}
+%
+% Some miscelanous MLA requirements/recommendations
 %    \begin{macrocode}
 \parindent=0.5in
-
+%    \end{macrocode}
+% Hack a raggedright that doesn't mess with everything else
+%    \begin{macrocode}
+\rightskip\z@ plus 3em\relax
+\multiply\hyphenpenalty by 3
+\divide\hyphenpenalty by 2
+\multiply\exhyphenpenalty by 3
+\divide\exhyphenpenalty by 2
+%    \end{macrocode}
+%
+% Now let's play with sectioning.
+%
+\RequirePackage{titlesec}
+\titleformat*{\section}{\scshape}
+\titleformat{\subsection}[runin]{\normalfont\itshape}{\thesubsection.}%
+   {0.5em}{}[.]
+\setcounter{secnumdepth}{0}
+%
 % \Finale
 \endinput
