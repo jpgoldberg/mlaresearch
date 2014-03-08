@@ -97,8 +97,8 @@ Execute the inst script with the --help option for more information.
 %
 % \title{The \textsf{mlaresearch} class\thanks{This document
 %   corresponds to \textsf{mlaresearch}~\fileversion, dated 
-%   \filedate.}\\for
-%   letters, invoices, and more}
+%   \filedate.}\\for papers conforming to MLA research paper submission
+%   format.}
 % \author{Jeffrey Goldberg \\ \texttt{jeffrey@goldmark.org}}
 %
 % \maketitle
@@ -114,7 +114,20 @@ Execute the inst script with the --help option for more information.
 % \tableofcontents
 % \section{Introduction}
 %
-% This class is intended to be used \dots
+% Instead of wanting attractive and readable documents, a number of
+% instutions and individuals want research papers submitted in a format
+% that owes much of its design  to the constraints of typewriters.
+% Students in humanities courses taught within the United States are
+% probably the most frequent victims of this requirement. In particular,
+% they are often required to submit coursework that conforms to the
+% guidelines of the Modern Lanaguage Association's \textit{ MLA Handbook
+% for Writers of Research Papers}. 
+%
+% The |mlaresearch| class is intended ease the burden of complying with the
+% formating requirement so that you may focus on the content of your
+% research paper. However, it offers no guarentee that the output will
+% satisfy the requirements of your particular instructor in your particular
+% course.
 %
 % The general setup of a document is
 % \begin{verbatim}
@@ -136,18 +149,17 @@ Execute the inst script with the --help option for more information.
 %     \end{document}
 % \end{verbatim}
 %
-% This document describes several examples. The distribution contains a directory 
-% |examples| where each of these has a complete set of files, ready to experiment with.
 %
 % \section{Class options}
-% The isodoc class is based on the |article| class and you can use the same
-% class options. Note, however, that if you change the font size from its
-% default (10pt) to an other value (11pt, 12pt) this applies to all text,
-% including headings, address label, et cetera. This is normally not what
-% you want. If you really want to change the font size of, for example, the
-% text body, do so with the usual font commands. Doing so will result in
-% poorly balanced document, however.
+% In this early version, there are no options specific to this class. Any
+% options are passwed to the |article| class and to any of the numerous
+% packages that this class loads. In future, there may be options designed
+% specifically for the |mlaresearch| class.
 %
+% \section{Included packages}\label{sec:incpackages}
+%
+% |mlaresearch| does almost all of its work by using the features of
+% commonly available packages. These are [PUT LIST HERE].
 %
 % \section{Commands}
 % \DescribeMacro{\showkeys}
@@ -168,9 +180,6 @@ Execute the inst script with the --help option for more information.
 \ProcessOptions
 \LoadClass{article}
 %    \end{macrocode}
-% We use |\ctable| floats here, and we need |ctable|'s commands for decent
-% spacing in tables and more. |ctable| also brings us |array|, |tabularx|,
-% |color|, and |xkeyval|. |eurosym| is used for the euro symbol.
 %    \begin{macrocode}
 \RequirePackage{geometry,fancyhdr,titling}
 %    \end{macrocode}
@@ -186,7 +195,7 @@ Execute the inst script with the --help option for more information.
 \RequirePackage{setspace}
 %    \end{macrocode}
 %
-% \section{Title material}
+% \subsection{Title material}
 %    \begin{macrocode}
 \newcommand{\lastname}[1]{%
   \gdef\thelastname{#1}}
@@ -199,7 +208,9 @@ Execute the inst script with the --help option for more information.
 \newcommand{\thecourse}{}
 %    \end{macrocode}
 %
-% Interaction with ragged2e seems to require explicit |\noindent|s
+% Author, Instructor, Course, and Date are all flush while the title is
+% centered. I've taken some extra steps to ensure that this will be
+% flushleft as there had been some unpleasent interactions with ragged2e.
 %    \begin{macrocode}
 \providecommand{\makemlatitle}{%
 \bgroup
@@ -241,11 +252,13 @@ Execute the inst script with the --help option for more information.
 %
 % Now let's play with sectioning.
 %
+%    \begin{macrocode}
 \RequirePackage{titlesec}
 \titleformat*{\section}{\scshape}
 \titleformat{\subsection}[runin]{\normalfont\itshape}{\thesubsection.}%
    {0.5em}{}[.]
 \setcounter{secnumdepth}{0}
+%    \end{macrocode}
 %
 % \Finale
 \endinput
