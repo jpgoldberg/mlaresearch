@@ -196,16 +196,21 @@ Execute the inst script with the --help option for more information.
 %    \end{macrocode}
 %
 % \subsection{Title material}
+% The user facing commands of |\lastname|, |\instructor|, |\course|
+% are used to set up some global definitions that are used throughout
+% the document.
 %    \begin{macrocode}
 \newcommand{\lastname}[1]{%
   \gdef\thelastname{#1}}
-\newcommand{\thelastname}{}
 \newcommand{\instructor}[1]{%
   \gdef\theinstructor{#1}}
-\newcommand{\theinstructor}{}
 \newcommand{\course}[1]{%
   \gdef\thecourse{#1}}
-\newcommand{\thecourse}{}
+%    \end{macrocode}
+% As |\thelastname| is used in the headers, it really must be defined
+% so we give it a default.
+%    \begin{macrocode}
+\lastname{Lastname}
 %    \end{macrocode}
 %
 % Author, Instructor, Course, and Date are all flush while the title is
@@ -215,13 +220,23 @@ Execute the inst script with the --help option for more information.
 \providecommand{\makemlatitle}{%
 \bgroup
   \parindent=0pt\relax
-  \theauthor \newline
-  \theinstructor \newline
-  \thecourse \newline 
-  \thedate \par
-  \begin{center}
- 	\thetitle
-  \end{center}
+  \ifdefined\theauthor
+    \theauthor \newline
+  \fi
+  \ifdefined\theinstructor
+    \theinstructor \newline
+  \fi
+  \ifdefined\thecourse
+    \thecourse \newline 
+  \fi
+  \ifdefined\thedate
+    \thedate \par
+  \fi
+  \ifdefined\thetitle
+    \begin{center}
+	  \thetitle
+    \end{center}
+  \fi
 \egroup\par }
 %    \end{macrocode}
 % Author last name and page number in right head.
