@@ -253,6 +253,39 @@ Execute the inst script with the --help option for more information.
 \LoadClass{article}
 %    \end{macrocode}
 %
+% \subsection{Set up fonts}
+% Let's get a Times-like fond that has the features we need
+%
+%    \begin{macrocode}
+\RequirePackage{ifxetex}
+\ifxetex
+  \RequirePackage{xltxtra}
+  \defaultfontfeatures{Ligatures=TeX}
+   \setmainfont{texgyrepagella}[Numbers={Proportional},
+    	Extension   = .otf,
+    	UprightFont = *-regular,
+        BoldFont    = *-bold,
+        ItalicFont  = *-italic,
+        BoldItalicFont = *-bolditalic]
+    \setsansfont{texgyreheros}[Scale=0.87595,Numbers={Proportional},
+    	Extension   = .otf,
+    	UprightFont = *-regular,
+    	BoldFont    = *-bold,
+    	ItalicFont  = *-italic,
+    	BoldItalicFont = *-bolditalic]
+    \setmonofont{texgyrecursor}[Scale=1.10072,Numbers={Proportional},
+    	Extension   = .otf,
+    	UprightFont = *-regular,
+    	BoldFont    = *-bold,
+    	ItalicFont  = *-italic,
+    	BoldItalicFont = *-bolditalic]
+\else
+  \RequirePackage[utf8x]{inputenc} 
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{textcomp}
+\fi
+%    \end{macrocode}
+%
 % \subsubsection{Set up biblatex}
 %
 % \begin{macro}{biblatex}
