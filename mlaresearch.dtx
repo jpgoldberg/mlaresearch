@@ -37,6 +37,7 @@ Execute the inst script with the --help option for more information.
 \RecordChanges
 \CodelineIndex\EnableCrossrefs
 
+\usepackage{metalogo}
 \begin{document}
   \DocInput{mlaresearch.dtx}
 \end{document}
@@ -256,29 +257,39 @@ Execute the inst script with the --help option for more information.
 % \subsection{Set up fonts}
 % Let's get a Times-like fond that has the features we need
 %
+% \subsubsection{With \XeLaTeX}
+%
+% This has been most extensively tested and designed for use with \XeLaTeX. The particular
+% project for which this was developed, required some Cyrillic, and so the default font choices
+% were made with that in mind.
+%
+% Do we have \XeLaTeX?
 %    \begin{macrocode}
 \RequirePackage{ifxetex}
 \ifxetex
+%    \end{macrocode}
+% 
+% Set up some basic stuff that is nice with \XeLaTeX.
+%    \begin{macrocode}
   \RequirePackage{xltxtra}
+  \RequirePackage{unicode-math}
+%    \end{macrocode}  
+% XITS is a Times-like font that covers much of European unicode. It doesn't seem to do small
+% caps, so we will get those from TeX Gyre Termes.\footnote{TeX Gyre Termes doesn't include
+% Cyrillic, which is why I've chosen to not use it at the mainfont.
+%    \begin{macrocode}
   \defaultfontfeatures{Ligatures=TeX}
-   \setmainfont{texgyrepagella}[Numbers={Proportional},
-    	Extension   = .otf,
-    	UprightFont = *-regular,
-        BoldFont    = *-bold,
-        ItalicFont  = *-italic,
-        BoldItalicFont = *-bolditalic]
-    \setsansfont{texgyreheros}[Scale=0.87595,Numbers={Proportional},
-    	Extension   = .otf,
-    	UprightFont = *-regular,
-    	BoldFont    = *-bold,
-    	ItalicFont  = *-italic,
-    	BoldItalicFont = *-bolditalic]
-    \setmonofont{texgyrecursor}[Scale=1.10072,Numbers={Proportional},
-    	Extension   = .otf,
-    	UprightFont = *-regular,
-    	BoldFont    = *-bold,
-    	ItalicFont  = *-italic,
-    	BoldItalicFont = *-bolditalic]
+	\setmainfont{XITS}[SmallCapsFont=TeX Gyre Termes,SmallCapsFeatures={Letters=SmallCaps}]
+%    \end{macrocode}
+%
+% Now set sans and mono faces. These should go reasonably well with XITS
+%    \begin{macrocode}
+	\setsansfont{Century Gothic}
+	\setmonofont{Courier New}
+%    \end{macrocode}
+% 
+% And if we don't have \XeTeX, we set up for input encoding, but don't pick the font.
+%    \begin{macrocode}		
 \else
   \RequirePackage[utf8x]{inputenc} 
   \RequirePackage[T1]{fontenc}
