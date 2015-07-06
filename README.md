@@ -1,4 +1,4 @@
-Copyright (C) 2014 by Jeffrey Goldberg <jeffrey@goldmark.org>
+Copyright (C) 2014--2015 by Jeffrey Goldberg <jeffrey@goldmark.org>
 
 This file may be distributed and/or modified under the conditions of
 the LaTeX Project Public License, either version 1.3 of this license
