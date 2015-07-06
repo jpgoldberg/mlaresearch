@@ -276,7 +276,7 @@ Execute the inst script with the --help option for more information.
 %    \end{macrocode}  
 % XITS is a Times-like font that covers much of European unicode. It doesn't seem to do small
 % caps, so we will get those from TeX Gyre Termes.\footnote{TeX Gyre Termes doesn't include
-% Cyrillic, which is why I've chosen to not use it at the mainfont.
+% Cyrillic, which is why I've chosen to not use it at the mainfont.}
 %    \begin{macrocode}
   \defaultfontfeatures{Ligatures=TeX}
 	\setmainfont{XITS}[SmallCapsFont=TeX Gyre Termes,SmallCapsFeatures={Letters=SmallCaps}]
@@ -315,6 +315,12 @@ Execute the inst script with the --help option for more information.
 %    \begin{macrocode}
 \RequirePackage{geometry,fancyhdr,titling}
 %    \end{macrocode}
+%
+% \textsf{fancyhdr} needs an increased headheight
+%    \begin{macrocode}
+\geometry{headheight=15.5pt}
+%    \end{macrocode}
+% 
 %
 % I don't know if anyone outside of the US is ever required to submit
 % course work in this style. For the moment, I will force letter paper
