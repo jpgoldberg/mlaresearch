@@ -161,6 +161,16 @@ Execute the inst script with the --help option for more information.
 % instead of biblatex. The default is |biblatex|.
 %
 %
+% \DescribeMacro{hyperref}
+% If the option |hyperref| is used the \textsf{hyperref} package is loaded
+% and \textsf{biblatex} (if used) is set up with |hyperref=true|.
+%
+% \DescribeMacro{nohyperref}
+% If the option |nohyperref| is set then \textsf{biblatex} (if used) is set up with |hyperref=false|.
+% The default is |biblatex|. This is done explicitly to supress a warning we would otherwise get from
+% \textsf{biblatex}
+%
+%
 % \section{Included packages}\label{sec:incpackages}
 %
 % |mlaresearch| does almost all of its work by using the features of
@@ -229,12 +239,14 @@ Execute the inst script with the --help option for more information.
 % First we need to set up a bunch of flags for handing our options.
 %    \begin{macrocode}
 \newif\ifmla@usebiblatex
+\newif\ifmla@usehyperref
 %    \end{macrocode}
 % 
 % \subsection{Options}
 % \subsubsection{Setting defaults}
 %    \begin{macrocode}
 \mla@usebiblatextrue
+\mla@usehyperreffalse
 %    \end{macrocode}
 %
 % \subsubsection{Process the options}
@@ -248,6 +260,14 @@ Execute the inst script with the --help option for more information.
 \DeclareOption{nobiblatex}{\mla@usebiblatexfalse }
 %    \end{macrocode}
 %
+%    \begin{macrocode}
+\DeclareOption{hyperref}{\mla@usehyperreftrue }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\DeclareOption{nohyperref}{\mla@usehyperreffalse }
+%    \end{macrocode}
+
 %
 %    \begin{macrocode}
 \ProcessOptions
@@ -297,6 +317,19 @@ Execute the inst script with the --help option for more information.
 \fi
 %    \end{macrocode}
 %
+% \subsubsection{Hyperref}
+%
+% \begin{macro}{hyperref}
+% \begin{macro}{nohyperref}
+%
+%    \begin{macrocode}
+\ifmla@usehyperref
+  \RequirePackage{hyperref}
+\fi
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+
 % \subsubsection{Set up biblatex}
 %
 % \begin{macro}{biblatex}
@@ -306,7 +339,11 @@ Execute the inst script with the --help option for more information.
 \ifmla@usebiblatex
   \RequirePackage[american]{babel}
   \RequirePackage{csquotes}
-  \RequirePackage[style=mla]{biblatex}
+  \ifmla@usehyperref
+  	\RequirePackage[style=mla,hyperref=true]{biblatex}
+  \else
+    \RequirePackage[style=mla,hyperref=false]{biblatex}
+  \fi
 \fi
 %    \end{macrocode}
 % \end{macro}
