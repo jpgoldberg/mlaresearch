@@ -177,6 +177,7 @@ Execute the inst script with the --help option for more information.
 % commonly available packages. These are 
 % \textsf{geometry}\index{geometry|usage},
 % \textsf{fancyhdr}\index{fancyhdr|usage},
+% \textsf{quoting},
 % \textsf{setspace},
 % and \textsf{titling}.
 %
@@ -304,7 +305,7 @@ Execute the inst script with the --help option for more information.
 %
 % Now set sans and mono faces. These should go reasonably well with XITS
 %    \begin{macrocode}
-	\setsansfont{Century Gothic}
+	\setsansfont{CMU Sans Serif}
 	\setmonofont{Courier New}
 %    \end{macrocode}
 % 
@@ -463,23 +464,17 @@ Execute the inst script with the --help option for more information.
 % one inch from the left margin. If quoting more than one paragraph, the
 % additional paragraph indentation is 1/4 inch. \S3.7.2.
 %
-% The approach I will take here is to redefine the \LaTeX\ |quote| and
-% |quotation| envirnments to have the requested indentations.%
-% Ideally, I would use the quoting package, but in its current version it
-% does not provide a nice way to have a separate |\parindent| within
-% quotations.
 %
-% \begin{macro}{quote}
-% Taken from Stack Exchange
 %    \begin{macrocode}
-\renewenvironment{quote}
-  {\list{}{\leftmargin\rightmargin}\item[]}
-  {\endlist}
+\RequirePackage[indentfirst=true,leftmargin=1in,rightmargin=0.5in]{quoting}[2014/01/01]
 %    \end{macrocode}
-% \end{macro}
 %
+% Thanks to a tip from Thomas Titz, the author of the \textsf{quoting} package, to get the
+% right |\parindent| in quoting, I should uses this etools mechamism
 %    \begin{macrocode}
-\RequirePackage[leftmargin=0.5in]{quoting}[2014/01/01]
+\AtBeginEnvironment{quoting}{%
+ \setlength{\parindent}{0.25in}%
+}
 %    \end{macrocode}
 %
 % \subsection{Ragged right}
