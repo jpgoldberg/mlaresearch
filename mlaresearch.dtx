@@ -466,15 +466,14 @@ Execute the inst script with the --help option for more information.
 %
 %
 %    \begin{macrocode}
-\RequirePackage[indentfirst=true,leftmargin=1in,rightmargin=0.5in]{quoting}[2014/01/01]
+\RequirePackage[indentfirst=true,leftmargin=1in,rightmargin=0pt]{quoting}[2014/01/01]
 %    \end{macrocode}
 %
 % Thanks to a tip from Thomas Titz, the author of the \textsf{quoting} package, to get the
-% right |\parindent| in quoting, I should uses this etools mechamism
+% right |\parindent| in quoting, I should uses this etools mechamism.
 %    \begin{macrocode}
-\AtBeginEnvironment{quoting}{%
- \setlength{\parindent}{0.25in}%
-}
+\RequirePackage{etoolbox}
+\AtBeginEnvironment{quoting}{\setlength{\parindent}{0.25in}}
 %    \end{macrocode}
 %
 % \subsection{Ragged right}
