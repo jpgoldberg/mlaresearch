@@ -166,8 +166,10 @@ Execute the inst script with the --help option for more information.
 % and \textsf{biblatex} (if used) is set up with |hyperref=true|.
 %
 % \DescribeMacro{nohyperref}
-% If the option |nohyperref| is set then \textsf{biblatex} (if used) is set up with |hyperref=false|.
-% The default is |biblatex|. This is done explicitly to supress a warning we would otherwise get from
+% If the option |nohyperref| is set then \textsf{biblatex} (if used) 
+% is set up with |hyperref=false|.
+% The default is |nohyperref|. This is done explicitly to supress a 
+% warning we would otherwise get from
 % \textsf{biblatex}
 %
 %
@@ -341,9 +343,9 @@ Execute the inst script with the --help option for more information.
   \RequirePackage[american]{babel}
   \RequirePackage{csquotes}
   \ifmla@usehyperref
-  	\RequirePackage[style=mla,hyperref=true]{biblatex}
+  	\RequirePackage[style=mla,hyperref=true,noremoteinfo=false]{biblatex}
   \else
-    \RequirePackage[style=mla,hyperref=false]{biblatex}
+    \RequirePackage[style=mla,hyperref=false,noremoteinfo=false]{biblatex}
   \fi
 \fi
 %    \end{macrocode}
