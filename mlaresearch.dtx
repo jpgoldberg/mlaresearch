@@ -243,6 +243,7 @@ Execute the inst script with the --help option for more information.
 %    \begin{macrocode}
 \newif\ifmla@usebiblatex
 \newif\ifmla@usehyperref
+\newif\ifmla@IB
 %    \end{macrocode}
 % 
 % \subsection{Options}
@@ -250,6 +251,7 @@ Execute the inst script with the --help option for more information.
 %    \begin{macrocode}
 \mla@usebiblatextrue
 \mla@usehyperreffalse
+\mla@IBfalse
 %    \end{macrocode}
 %
 % \subsubsection{Process the options}
@@ -269,6 +271,14 @@ Execute the inst script with the --help option for more information.
 %
 %    \begin{macrocode}
 \DeclareOption{nohyperref}{\mla@usehyperreffalse }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\DeclareOption{ib}{\mla@IBtrue }
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\DeclareOption{noib}{\mla@IBfalse }
 %    \end{macrocode}
 
 %
@@ -404,6 +414,32 @@ Execute the inst script with the --help option for more information.
 %    \end{macrocode}
 % \end{macro}
 %
+% \subsubsection{IB Title material}
+% \begin{macro}{\subject}
+% Preamble commend for setting the subject name
+%    \begin{macrocode}
+\newcommand{\subject}[1]{%
+  \gdef\thesubject{#1}}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \begin{macro}{\candidatenumber}
+% Preamble commend for setting the candidatenumber name
+%    \begin{macrocode}
+\newcommand{\candidatenumber}[1]{%
+  \gdef\thecandidatenumber{#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\wordcount}
+% Preamble commend for setting the wordcount name
+%    \begin{macrocode}
+\newcommand{\wordcount}[1]{%
+  \gdef\thewordcount{#1}}
+%    \end{macrocode}
+% \end{macro}
+
+%
 % \begin{macro}{\makemlatitle}
 % Author, Instructor, Course, and Date are all flush while the title is
 % centered. I've taken some extra steps to ensure that this will be
@@ -433,6 +469,46 @@ Execute the inst script with the --help option for more information.
 %    \end{macrocode}
 % \end{macro}
 %
+%% \begin{macro}{\makeIBtitle}
+% This is taken largely from http://blog.ankurdave.com/2009/04/creating-your-own-latex-document-class.html
+% but modified for what seems to be asked for at
+% Plano East Senior Highschool
+%    \begin{macrocode}
+\providecommand{\makeIBtitle}{%
+\begin{titlepage}
+\parskip=20pt
+ \vspace*{1in} %% In addition to the one inch margin
+ \begin{center}
+   {\Large \MakeUppercase{\thetitle}}
+   \par
+   A Study in \thesubject
+   \par
+   \theinstructor, Advisor
+  \end{center}
+ \vfill
+ \begin{center}
+  \par by\\
+  \theauthor
+  \par
+  Candidate \thecandidatenumber
+  \par
+  \thedate
+\end{center}
+\end{titlepage}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{IB ToC}
+%    \begin{macrocode}
+ \RequirePackage{tocloft}
+ \tocloftpagestyle{plain}
+ \renewcommand{\contentsname}{Table of Contents}
+ \renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
+ \renewcommand{\cftaftertoctitle}{\hfill}
+ \renewcommand{\cftsecleader}{\bfseries\cftdotfill{\cftdotsep}}
+%    \end{macrocode}
+
 % \subsection{Page headers}
 % Here we use the \textsf{fancyhdr} package to set up running headers and
 % footers as required. Nothing fancy, just header.
