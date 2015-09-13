@@ -516,7 +516,7 @@ Execute the inst script with the --help option for more information.
 % Author last name and page number in right head.
 %    \begin{macrocode}
 \RequirePackage{fancyhdr}
-\pagestyle{fancy}
+%\pagestyle{fancy}
 \rhead{\thelastname\ \thepage}
 \lhead{}
 \chead{}
@@ -528,6 +528,39 @@ Execute the inst script with the --help option for more information.
 \lfoot{}
 \cfoot{}
 \rfoot{}
+%    \end{macrocode}
+%
+% We also need a special page style for front matter in the IB 
+% requirements
+%    \begin{macrocode}
+\fancypagestyle{front}{%
+   \lhead{}\chead{}\rhead{}
+   \renewcommand{\headrulewidth}{0pt}
+   \renewcommand{\footrulewidth}{0pt}
+   \headsep=1in\relax
+   \addtolength{\headsep}{-\headheight}
+   \addtolength{\textheight}{-\headsep}
+   \lfoot{}\cfoot{\thepage}\rfoot{}
+}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand\frontmatter{%
+ \clearpage
+ \pagenumbering{roman}
+ \setcounter{page}{1}
+ \pagestyle{front}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\mainmatter{%
+ \clearpage
+ \pagenumbering{arabic}
+ \setcounter{page}{1}
+ \thispagestyle{front}
+ \pagestyle{fancy}
+ \begin{center}\Large\bfseries \thetitle\end{center}
+ \par
+}
 %    \end{macrocode}
 %
 % \subsection{Paragraph indenting}
