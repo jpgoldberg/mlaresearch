@@ -369,8 +369,8 @@ Execute the inst script with the --help option for more information.
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\PassOptionsToPackage{showframe,includefoot}{geometry}
-\RequirePackage{geometry,fancyhdr,titling,calc}
+\PassOptionsToPackage{includefoot,includehead}{geometry}
+\RequirePackage{geometry,fancyhdr,titling,calc,afterpage}
 %    \end{macrocode}
 %
 % \textsf{fancyhdr} needs an increased headheight
@@ -379,12 +379,11 @@ Execute the inst script with the --help option for more information.
 \geometry{bottom=1in}
 \geometry{left=1in,right=1in}
 \geometry{heightrounded}
-\geometry{headheight=48pt}
+\geometry{headheight=30pt}
+\geometry{headsep=1in - \headheight}
 %    \end{macrocode}
 %    \begin{macrocode}
 \savegeometry{main}
-\geometry{top=2in}
-\geometry{headheight=15pt}
 \savegeometry{front}
 \loadgeometry{main}
 %    \end{macrocode}
@@ -532,7 +531,7 @@ Execute the inst script with the --help option for more information.
 % 
 % Footer is blank
 %    \begin{macrocode}
-  \lfoot{Pagestyle: \textit{main}}
+  \lfoot{}
   \cfoot{}
   \rfoot{}
 }
@@ -545,7 +544,7 @@ Execute the inst script with the --help option for more information.
    \lhead{}\chead{}\rhead{}
    \renewcommand{\headrulewidth}{0pt}
    \renewcommand{\footrulewidth}{0pt}
-   \lfoot{Pagestyle: \textit{front}}
+   \lfoot{}
    \cfoot{\thepage}\rfoot{}
 }
 %    \end{macrocode}
@@ -561,13 +560,13 @@ Execute the inst script with the --help option for more information.
 %
 %    \begin{macrocode}
 \newcommand\mainmatter{%
- \clearpage\loadgeometry{main}
+ \clearpage
+ \loadgeometry{front}
+ \afterpage{\loadgeometry{main}}
  \pagenumbering{arabic}
  \setcounter{page}{1}
  \thispagestyle{front}
  \pagestyle{main}
- \vspace*{\dimexpr 1in - \parskip\relax}
- \vspace*{-\baselineskip}
  \begin{center}\Large\bfseries \thetitle\end{center}
  \par
 }
