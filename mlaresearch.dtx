@@ -484,7 +484,7 @@ Execute the inst script with the --help option for more information.
 \begin{titlepage}
 \parskip=20pt\relax
  \begin{center}
-   {\Large \MakeUppercase{\thetitle}}
+   {\MakeUppercase{\thetitle}}
    \par
    A Study in \thesubject
    \par
@@ -509,7 +509,7 @@ Execute the inst script with the --help option for more information.
  \RequirePackage{tocloft}
  \tocloftpagestyle{front}
  \AtBeginDocument{\gappto\captionsenglish{\renewcommand{\contentsname}{Table of Contents}}}
- \renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries}
+ \renewcommand{\cfttoctitlefont}{\hfill\bfseries}
  \renewcommand{\cftaftertoctitle}{\hfill}
  \renewcommand{\cftsecleader}{\bfseries\cftdotfill{\cftdotsep}}
 %    \end{macrocode}
@@ -567,7 +567,7 @@ Execute the inst script with the --help option for more information.
  \setcounter{page}{1}
  \thispagestyle{front}
  \pagestyle{main}
- \begin{center}\Large\bfseries \thetitle\end{center}
+ \begin{center}\bfseries \thetitle\end{center}
  \par
 }
 %    \end{macrocode}
@@ -616,7 +616,7 @@ Execute the inst script with the --help option for more information.
 % document.
 %    \begin{macrocode}
 \RequirePackage{titlesec}
-\titleformat*{\section}{\large\bfseries}
+\titleformat*{\section}{\bfseries}
 \titleformat{\subsection}[runin]{\normalfont\itshape}{\thesubsection.}%
    {0.5em}{}[.]
 \setcounter{secnumdepth}{0}
