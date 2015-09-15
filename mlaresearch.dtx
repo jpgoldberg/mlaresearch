@@ -482,7 +482,7 @@ Execute the inst script with the --help option for more information.
 \providecommand{\makeIBtitle}{%
 \loadgeometry{front}
 \begin{titlepage}
-\parskip=20pt
+\parskip=20pt\relax
  \begin{center}
    {\Large \MakeUppercase{\thetitle}}
    \par
@@ -490,10 +490,10 @@ Execute the inst script with the --help option for more information.
    \par
    \theinstructor, Advisor
   \end{center}
- \vfill
+ \vfill\relax
  \begin{center}
   \par by\\
-  \theauthor
+  \relax\theauthor
   \par
   Candidate \thecandidatenumber
   \par
@@ -523,7 +523,7 @@ Execute the inst script with the --help option for more information.
 \RequirePackage{fancyhdr}
 %\pagestyle{fancy}
 \fancypagestyle{main}{%
-  \rhead{\thelastname\ \thepage \\ Candidate \#\thecandidatenumber }
+  \rhead{\thelastname\ \thepage \\\relax Candidate \#\thecandidatenumber }
   \lhead{}
   \chead{}
   \renewcommand{\headrulewidth}{0pt}
@@ -593,7 +593,7 @@ Execute the inst script with the --help option for more information.
 % right |\parindent| in quoting, I should uses this etools mechamism.
 %    \begin{macrocode}
 \RequirePackage{etoolbox}
-\AtBeginEnvironment{quoting}{\setlength{\parindent}{0.25in}}
+\AtBeginEnvironment{quoting}{\setlength{\parindent}{0.25in plus 0pt minus 0pt}}
 %    \end{macrocode}
 %
 % \subsection{Ragged right}
