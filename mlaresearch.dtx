@@ -483,22 +483,19 @@ Execute the inst script with the --help option for more information.
 \loadgeometry{front}
 \begin{titlepage}
 \parskip=20pt\relax
- \begin{center}
-   {\MakeUppercase{\thetitle}}
+ \centering
+   \MakeUppercase{\thetitle}
    \par
    A Study in \thesubject
    \par
    \theinstructor, Advisor
-  \end{center}
- \vfill\relax
- \begin{center}
-  \par by\\
+   \vfill\relax
+  by\\
   \relax\theauthor
   \par
   Candidate \thecandidatenumber
-  \par
+  \vfill
   \thedate
-\end{center}
 \end{titlepage}
 }
 %    \end{macrocode}
@@ -542,6 +539,18 @@ Execute the inst script with the --help option for more information.
 %    \begin{macrocode}
 \fancypagestyle{front}{%
    \lhead{}\chead{}\rhead{}
+   \renewcommand{\headrulewidth}{0pt}
+   \renewcommand{\footrulewidth}{0pt}
+   \lfoot{}
+   \cfoot{\thepage}\rfoot{}
+}
+%    \end{macrocode}
+%    \begin{macrocode}
+\renewenvironment{abstract}{\thispagestyle{abstract}}{}
+\fancypagestyle{abstract}{%
+   \lhead{}
+   \chead{\textbf{Abstract}}
+   \rhead{}
    \renewcommand{\headrulewidth}{0pt}
    \renewcommand{\footrulewidth}{0pt}
    \lfoot{}
