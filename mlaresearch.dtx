@@ -92,7 +92,7 @@ Execute the inst script with the --help option for more information.
 % \GetFileInfo{mlaresearch.dtx}
 %
 % \title{The \textsf{mlaresearch} class\thanks{This document
-%   corresponds to \textsf{mlaresearch}~\fileversion, dated 
+%   corresponds to \textsf{mlaresearch}~\fileversion, dated
 %   \filedate.}\\for papers conforming to MLA research paper submission
 %   format.}
 % \author{Jeffrey Goldberg \\ \texttt{jeffrey@goldmark.org}}
@@ -117,7 +117,7 @@ Execute the inst script with the --help option for more information.
 % probably the most frequent victims of this requirement. In particular,
 % they are often required to submit coursework that conforms to the
 % guidelines of the Modern Lanaguage Association's \textit{ MLA Handbook
-% for Writers of Research Papers}. 
+% for Writers of Research Papers}.
 %
 % The |mlaresearch| class is intended ease the burden of complying with the
 % formating requirement so that you may focus on the content of your
@@ -166,9 +166,9 @@ Execute the inst script with the --help option for more information.
 % and \textsf{biblatex} (if used) is set up with |hyperref=true|.
 %
 % \DescribeMacro{nohyperref}
-% If the option |nohyperref| is set then \textsf{biblatex} (if used) 
+% If the option |nohyperref| is set then \textsf{biblatex} (if used)
 % is set up with |hyperref=false|.
-% The default is |nohyperref|. This is done explicitly to supress a 
+% The default is |nohyperref|. This is done explicitly to supress a
 % warning we would otherwise get from
 % \textsf{biblatex}
 %
@@ -176,7 +176,7 @@ Execute the inst script with the --help option for more information.
 % \section{Included packages}\label{sec:incpackages}
 %
 % |mlaresearch| does almost all of its work by using the features of
-% commonly available packages. These are 
+% commonly available packages. These are
 % \textsf{geometry}\index{geometry|usage},
 % \textsf{fancyhdr}\index{fancyhdr|usage},
 % \textsf{quoting},
@@ -245,7 +245,7 @@ Execute the inst script with the --help option for more information.
 \newif\ifmla@usehyperref
 \newif\ifmla@IB
 %    \end{macrocode}
-% 
+%
 % \subsection{Options}
 % \subsubsection{Setting defaults}
 %    \begin{macrocode}
@@ -256,7 +256,7 @@ Execute the inst script with the --help option for more information.
 %
 % \subsubsection{Process the options}
 % I like to just set flags (|\if...|s) in the |\DeclareOoption| code and use the
-% flags later as needed. 
+% flags later as needed.
 %    \begin{macrocode}
 \DeclareOption{biblatex}{\mla@usebiblatextrue }
 %    \end{macrocode}
@@ -301,12 +301,12 @@ Execute the inst script with the --help option for more information.
 \RequirePackage{ifxetex}
 \ifxetex
 %    \end{macrocode}
-% 
+%
 % Set up some basic stuff that is nice with \XeLaTeX.
 %    \begin{macrocode}
   \RequirePackage{xltxtra}
   \RequirePackage{unicode-math}
-%    \end{macrocode}  
+%    \end{macrocode}
 % XITS is a Times-like font that covers much of European unicode. It doesn't seem to do small
 % caps, so we will get those from TeX Gyre Termes.\footnote{TeX Gyre Termes doesn't include
 % Cyrillic, which is why I've chosen to not use it at the mainfont.}
@@ -320,11 +320,11 @@ Execute the inst script with the --help option for more information.
 	\setsansfont{CMU Sans Serif}
 	\setmonofont{Courier New}
 %    \end{macrocode}
-% 
+%
 % And if we don't have \XeTeX, we set up for input encoding, but don't pick the font.
-%    \begin{macrocode}		
+%    \begin{macrocode}
 \else
-  \RequirePackage[utf8x]{inputenc} 
+  \RequirePackage[utf8x]{inputenc}
   \RequirePackage[T1]{fontenc}
   \RequirePackage{textcomp}
 \fi
@@ -387,7 +387,7 @@ Execute the inst script with the --help option for more information.
 \savegeometry{front}
 \loadgeometry{main}
 %    \end{macrocode}
-% 
+%
 % \subsection{Title material}
 % The user facing commands of |\lastname|, |\instructor|, |\course|
 % are used to set up some global definitions that are used throughout
@@ -427,7 +427,7 @@ Execute the inst script with the --help option for more information.
   \gdef\thesubject{#1}}
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % \begin{macro}{\candidatenumber}
 % Preamble commend for setting the candidatenumber name
 %    \begin{macrocode}
@@ -460,7 +460,7 @@ Execute the inst script with the --help option for more information.
     \theinstructor \newline
   \fi
   \ifdefined\thecourse
-    \thecourse \newline 
+    \thecourse \newline
   \fi
   \ifdefined\thedate
     \thedate \par
@@ -494,6 +494,9 @@ Execute the inst script with the --help option for more information.
   \relax\theauthor
   \par
   Candidate \thecandidatenumber
+  \par\ifdefined\thewordcount
+    \thewordcount\ words
+  \fi
   \vfill
   \thedate
 \end{titlepage}
@@ -525,7 +528,7 @@ Execute the inst script with the --help option for more information.
   \chead{}
   \renewcommand{\headrulewidth}{0pt}
 %    \end{macrocode}
-% 
+%
 % Footer is blank
 %    \begin{macrocode}
   \lfoot{}
@@ -534,7 +537,7 @@ Execute the inst script with the --help option for more information.
 }
 %    \end{macrocode}
 %
-% We also need a special page style for front matter in the IB 
+% We also need a special page style for front matter in the IB
 % requirements
 %    \begin{macrocode}
 \fancypagestyle{front}{%
