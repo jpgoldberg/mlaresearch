@@ -312,13 +312,29 @@ Execute the inst script with the --help option for more information.
 % Cyrillic, which is why I've chosen to not use it at the mainfont.}
 %    \begin{macrocode}
   \defaultfontfeatures{Ligatures=TeX}
-	\setmainfont{XITS}[SmallCapsFont=TeX Gyre Termes,SmallCapsFeatures={Letters=SmallCaps}]
+	\setmainfont{XITS-Regular}[
+    Extension         = .otf ,
+    ItalicFont        = XITS-Italic,
+    BoldFont          = XITS-Bold,
+    BoldItalicFont    = XITS-BoldItalic,
+    SmallCapsFont     = texgyretermes-regular,
+    SmallCapsFeatures = {Letters=SmallCaps}]
+  \setmathfont{XITSMath-Regular.otf}[
+    BoldFont = XITSMath-Bold.otf,
+  ]
 %    \end{macrocode}
 %
 % Now set sans and mono faces. These should go reasonably well with XITS
 %    \begin{macrocode}
-	\setsansfont{CMU Sans Serif}
-	\setmonofont{Courier New}
+	\setsansfont{FiraSans}[
+    Extension   = .otf ,
+    UprightFont = *-Book,
+    BoldFont    = *-Bold,
+    ItalicFont  = *-BookItalic,
+  ]
+	\setmonofont{FiraMono-Regular.otf}[
+    BoldFont = FiraMono-Bold.otf,
+  ]
 %    \end{macrocode}
 %
 % And if we don't have \XeTeX, we set up for input encoding, but don't pick the font.
