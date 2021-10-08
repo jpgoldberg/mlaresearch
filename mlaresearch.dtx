@@ -30,7 +30,7 @@ Execute the inst script with the --help option for more information.
 \ProvidesFile{mlaresearch.dtx}
 %</driver>
 %<class>\NeedsTeXFormat{LaTeX2e}[2014/04/05]
-%<class>\ProvidesClass{mlaresearch}[2014/04/05 v0.02 mlaresearch class for MLA papers]
+%<class>\ProvidesClass{mlaresearch}[2021/10/08 v0.0.3 mlaresearch class for MLA papers]
 %<*driver>
 \documentclass{ltxdoc}
 %\OnlyDescription
@@ -116,10 +116,10 @@ Execute the inst script with the --help option for more information.
 % Students in humanities courses taught within the United States are
 % probably the most frequent victims of this requirement. In particular,
 % they are often required to submit coursework that conforms to the
-% guidelines of the Modern Lanaguage Association's \textit{ MLA Handbook
+% guidelines of the Modern Lanaguage Association's \textit{MLA Handbook
 % for Writers of Research Papers}.
 %
-% The |mlaresearch| class is intended ease the burden of complying with the
+% The |mlaresearch| class is intended to ease the burden of complying with the
 % formating requirement so that you may focus on the content of your
 % research paper. However, it offers no guarentee that the output will
 % satisfy the requirements of your particular instructor in your particular
@@ -147,7 +147,8 @@ Execute the inst script with the --help option for more information.
 %
 % \section{Class options}
 %
-% Any options are passed to the |article| class.
+% All options given to this document class are passed to
+% are passed to the |article| class. This class also defines a set of its own options
 %
 % \DescribeMacro{biblatex}
 % If the option |biblatex| is used the \textsf{biblatex} is called and set with
@@ -159,7 +160,6 @@ Execute the inst script with the --help option for more information.
 % do any of the set up for biblatex or bibtex. The user will have to set
 % those up on their own. This will be needed if you are using bibtex
 % instead of biblatex. The default is |biblatex|.
-%
 %
 % \DescribeMacro{hyperref}
 % If the option |hyperref| is used the \textsf{hyperref} package is loaded
@@ -182,18 +182,23 @@ Execute the inst script with the --help option for more information.
 % \textsf{quoting},
 % \textsf{setspace},
 % and \textsf{titling}.
+% Other packages may be loaded depending on options passed to the class.
 %
 % \section{Preamble commands}
 %
 % This class defines some commands to be used in the document preamble.
-% These are |\lastname|, |\course|, and |\instructor|. These, along with
-% the standard |\date| and |\title| commands are used to set the title
-% page and the running header as expected by the guide.
+% These are \cmd{\lastname},
+% \cmd{\course},
+% \cmd{\instructor},
+% and \cmd{\candidatenumber}.
+% These, along with the standard \cmd{\date} and \cmd{\title} commands,
+% are used to set the title  page and the running header
+% as expected by the guide.
 %
 % \DescribeMacro{\lastname}
 % \cmd{\lastname}\marg{your-surname-here}
 %
-% The author's surname (family name) is set with the \cmd{lastname} command,
+% The author's surname (family name) is set with the \cmd{\lastname} command,
 % which takes one argument, your lastname.\footnote{The MLA Guide refers
 % to the surname as `Lastname'', so I am sticking with that unfortuante
 % terminology for the name of the command. Of course, \emph{I} know that
@@ -216,6 +221,13 @@ Execute the inst script with the --help option for more information.
 % instructor wishes to see it, as that is who will be grading your paper.
 % Do not use this as an opportunity to say something mean.}
 %
+% \DescribeMacro{\candidatenumber}
+% \cmd{\candidatenumber}\marg{IB candidate number}
+%
+% An an extended essay as part of an International Baccalaureate program expects
+% a candidate number of the title page and in the running header.
+% Provide only the number, for example |\candidatenumber{1234}|. 
+%
 % \section{Within document commands}
 %
 % \DescribeMacro{\makemlatitle}
@@ -223,7 +235,11 @@ Execute the inst script with the --help option for more information.
 % the document.\footnote{Perhaps I should have just redefined
 % \cmd{\maketitle} here. This might change in future versions.}
 %
-%
+% \DescribeMacro{\makeIBtitle}
+% Use \cmd{\makeIBtitle} to produce a title page which satisfies the requirements
+% of an IB extented essay.
+% Note that the choice of which to use may be controlled by package
+% options in the future.
 %
 % \StopEventually{\PrintChanges \PrintIndex}
 %
@@ -236,7 +252,8 @@ Execute the inst script with the --help option for more information.
 %    \begin{macrocode}
 \PassOptionsToClass{letterpaper,12pt}{article}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-% \subsection{Our one options}
+%    \end{macrocode}
+% \subsection{Our own options}
 %
 % \subsubsection{Defining flags}
 % First we need to set up a bunch of flags for handing our options.
@@ -273,6 +290,7 @@ Execute the inst script with the --help option for more information.
 \DeclareOption{nohyperref}{\mla@usehyperreffalse }
 %    \end{macrocode}
 %
+% The options for an IB extended essay are not currently used. But they will be.
 %    \begin{macrocode}
 \DeclareOption{ib}{\mla@IBtrue }
 %    \end{macrocode}
@@ -288,7 +306,7 @@ Execute the inst script with the --help option for more information.
 %    \end{macrocode}
 %
 % \subsection{Set up fonts}
-% Let's get a Times-like fond that has the features we need
+% Let's get a Times-like font that has the features we need.
 %
 % \subsubsection{With \XeLaTeX}
 %
